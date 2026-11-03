@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08131d" />
+    <title>TerraLens — GeoAI Intelligence</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark"><span></span><span></span><span></span></div>
+          <div>
+            <strong>TerraLens</strong>
+            <small>GeoAI intelligence</small>
+          </div>
+        </div>
+
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="nav-list" aria-label="Workspace navigation">
+          <button class="nav-item active"><span class="nav-icon">⌁</span>Mission control</button>
+          <button class="nav-item"><span class="nav-icon">◫</span>Saved analyses <b>8</b></button>
+          <button class="nav-item"><span class="nav-icon">◌</span>Data catalog</button>
+        </nav>
+
+        <div class="workspace-label domain-label">MONITORING DOMAINS</div>
+        <div class="domain-list">
+          <button class="domain active" data-domain="flood"><i class="domain-dot flood-dot"></i><span>Flood monitoring</span><em>Live</em></button>
+          <button class="domain" data-domain="wildfire"><i class="domain-dot fire-dot"></i><span>Wildfire monitoring</span></button>
+          <button class="domain" data-domain="earthquake"><i class="domain-dot quake-dot"></i><span>Earthquake impact</span></button>
+          <button class="domain" data-domain="urban"><i class="domain-dot city-dot"></i><span>Urban planning</span></button>
+          <button class="domain" data-domain="agriculture"><i class="domain-dot crop-dot"></i><span>Crop health</span></button>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="system-status"><span class="pulse"></span><span>Demo mode</span><small>All systems nominal</small></div>
+          <div class="user-card"><div class="avatar">AR</div><div><strong>Alex Rivera</strong><small>Response analyst</small></div><span class="more">•••</span></div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Mission control</span><b>/</b><strong>Flood monitoring</strong></div>
+          <div class="top-actions"><span class="updated"><span class="status-dot"></span>Updated just now</span><button class="icon-button" aria-label="Notifications">♢<i></i></button><button class="avatar top-avatar">AR</button></div>
+        </header>
+
+        <section class="page-heading">
+          <div><p class="eyebrow">SATELLITE INTELLIGENCE · <span id="domainEyebrow">FLOOD EVENT</span></p><h1>Good morning, Alex <span>✦</span></h1><p class="heading-copy">Ask questions about your imagery. TerraLens will investigate, reason, and surface evidence.</p></div>
+          <button class="outline-button" id="newAnalysis"><span>＋</span> New analysis</button><input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,image/tiff" hidden />
+        </section>
+
+        <section class="stats-grid" aria-label="Situation summary">
+          <article class="stat-card"><div class="stat-icon blue">◒</div><div><span>Area monitored</span><strong>248.6 <small>km²</small></strong><em class="positive">↑ 12.4% <i>vs. last pass</i></em></div><div class="sparkline blue-line"></div></article>
+          <article class="stat-card"><div class="stat-icon orange">⌁</div><div><span>Active alerts</span><strong id="alertCount">12 <small>events</small></strong><em class="negative">↑ 3 <i>since yesterday</i></em></div><div class="sparkline orange-line"></div></article>
+          <article class="stat-card"><div class="stat-icon green">◉</div><div><span>Assets assessed</span><strong>1,842 <small>objects</small></strong><em class="positive">↑ 8.7% <i>this week</i></em></div><div class="sparkline green-line"></div></article>
+          <article class="stat-card"><div class="stat-icon purple">✦</div><div><span>Agent confidence</span><strong>91.8 <small>%</small></strong><em class="positive">↑ 2.1% <i>this week</i></em></div><div class="sparkline purple-line"></div></article>
+        </section>
+
+        <section class="analysis-layout">
+          <div class="visual-column">
+            <div class="section-header"><div><h2>Analysis workspace</h2><p id="workspaceDescription">Flood impact assessment · Riverbend, CA</p></div><div class="view-controls"><button class="view-control active">▧ <span>Image</span></button><button class="view-control">⌖ <span>Map</span></button><button class="view-control">◴ <span>Compare</span></button></div></div>
+            <div class="image-card">
+              <div class="image-toolbar"><div class="image-title"><span class="live-badge"><i></i> LIVE ANALYSIS</span><strong>Riverbend flood extent</strong><small>Sentinel-2 · 02 Nov 2026 · 10:42 UTC</small></div><div class="toolbar-actions"><button title="Toggle evidence" id="evidenceToggle">◈</button><button title="Fullscreen">⛶</button><button title="More">•••</button></div></div>
+              <div class="image-stage" id="imageStage">
+                <img id="sceneImage" src="Screenshot from 2026-11-01 22-37-04.png" alt="Satellite and aerial imagery analysis reference" />
+                <div class="scan-line"></div>
+                <div class="map-label label-one"><i></i> Flood extent <b>78%</b></div>
+                <div class="map-label label-two"><i></i> Road network <b>64%</b></div>
+                <div class="evidence-box building-one"><span>1</span></div>
+                <div class="evidence-box building-two"><span>2</span></div>
+                <div class="evidence-box road-box"><span>Road</span></div>
+                <div class="north-arrow">N<br><b>↑</b></div>
+                <div class="scale-bar"><span></span><small>500 m</small></div>
+                <div class="image-fade"></div>
+                <div class="image-caption"><span>Evidence overlay</span><span><i class="legend flooded"></i>Inundated <i class="legend exposed"></i>Exposed asset</span></div>
+              </div>
+              <div class="image-footer"><span>Source: Copernicus Sentinel-2 · 10 m resolution</span><span>EPSG:4326 · <b>●</b> Processing complete</span></div>
+            </div>
+            <div class="evidence-row"><div><span class="tiny-icon">⌁</span><div><strong>3 assets need review</strong><small>Low confidence or high impact</small></div></div><button class="text-button">Review queue →</button></div>
+          </div>
+
+          <aside class="agent-panel">
+            <div class="agent-header"><div class="agent-orb">✦</div><div><h2>TerraLens agent</h2><p><span class="status-dot"></span> Ready to investigate</p></div><button class="more-button">•••</button></div>
+            <div class="conversation" id="conversation">
+              <div class="agent-message"><div class="mini-orb">✦</div><div><p>I've reviewed the latest imagery for <strong>Riverbend</strong>. What would you like to investigate?</p><div class="suggestion-list"><button class="suggestion" data-prompt="Describe this scene in detail">Describe this scene in detail <span>↗</span></button><button class="suggestion" data-prompt="How many buildings are flooded?">How many buildings are flooded? <span>↗</span></button><button class="suggestion" data-prompt="Is the road at the center flooded?">Is the road at the center flooded? <span>↗</span></button></div></div></div>
+            </div>
+            <div class="agent-tools"><span>Suggested analysis</span><button class="tool-chip" data-prompt="Summarize flood impact">Impact summary</button><button class="tool-chip" data-prompt="Find the most affected area">Find hotspots</button></div>
+            <form class="chat-input" id="chatForm"><input id="chatInput" autocomplete="off" placeholder="Ask anything about this imagery..." /><button type="submit" aria-label="Send message">↑</button></form>
+            <div class="agent-footer"><span>⌘ Enter to send</span><span><i class="green-dot"></i> Grounded responses on</span></div>
+          </aside>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="panel-card activity-card"><div class="panel-title"><div><h2>Recent analyses</h2><p>Your latest investigations and agent runs</p></div><button class="text-button">View all →</button></div><div class="activity-list"><div class="activity-item"><span class="activity-icon blue">⌁</span><div><strong>Flood impact assessment</strong><small>Riverbend, CA · Just now</small></div><span class="confidence high">91%</span><span class="row-arrow">→</span></div><div class="activity-item"><span class="activity-icon orange">⌁</span><div><strong>Building damage scan</strong><small>Northpoint, CA · 2 hours ago</small></div><span class="confidence medium">78%</span><span class="row-arrow">→</span></div><div class="activity-item"><span class="activity-icon green">◌</span><div><strong>Crop health assessment</strong><small>Valley farm district · Yesterday</small></div><span class="confidence high">94%</span><span class="row-arrow">→</span></div></div></article>
+          <article class="panel-card alerts-card"><div class="panel-title"><div><h2>Situation alerts</h2><p>Priority items requiring attention</p></div><button class="filter-button">All alerts⌄</button></div><div class="alert-item"><span class="alert-mark critical">!</span><div><strong>Road access compromised</strong><small>Riverbend Central · 18 min ago</small></div><span class="severity critical-text">Critical</span></div><div class="alert-item"><span class="alert-mark warning">!</span><div><strong>Rising water detected</strong><small>East levee sector · 42 min ago</small></div><span class="severity warning-text">Warning</span></div><div class="alert-item"><span class="alert-mark info">i</span><div><strong>New imagery available</strong><small>South agricultural zone · 1 hr ago</small></div><span class="severity info-text">Info</span></div></article>
+        </section>
+        <footer class="app-footer"><span>TerraLens v0.1 · Demo workspace</span><span>Model: VLM-Grounding 2.4 <b>·</b> <a href="#">Documentation</a></span></footer>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
