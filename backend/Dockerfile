@@ -8,7 +8,10 @@ RUN python -m venv /opt/venv && /opt/venv/bin/pip install --upgrade pip && /opt/
 
 FROM python:3.12-slim
 ENV PATH=/opt/venv/bin:$PATH PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 GEOAI_DATA_DIR=/data
-RUN useradd --system --uid 10001 --home /app geoai && mkdir -p /data /app && chown geoai /data /app
+# libexpat1: runtime dependency of the rasterio/GDAL wheels
+RUN apt-get update && apt-get install -y --no-install-recommends libexpat1 \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd --uid 10001 --no-create-home --home-dir /app geoai && mkdir -p /data /app && chown geoai /data /app
 COPY --from=build /opt/venv /opt/venv
 WORKDIR /app
 USER geoai
