@@ -1,0 +1,34 @@
+# docker compose up --build        -> web http://localhost:8080 , api http://localhost:8000/api/docs
+# docker compose --profile postgres up --build   -> same, with PostgreSQL instead of SQLite
+services:
+  api:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    env_file: [{ path: .env, required: false }]
+    environment:
+      GEOAI_CORS_ORIGINS: "http://localhost:8080"
+    ports: ["8000:8000"]
+    volumes: ["geoai-data:/data"]
+    read_only: true
+    tmpfs: ["/tmp"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args: { VITE_API_URL: "http://localhost:8000" }
+    ports: ["8080:8080"]
+    depends_on: [api]
+    restart: unless-stopped
+
+  postgres:
+    profiles: ["postgres"]
+    image: postgres:16-alpine
+    environment: { POSTGRES_USER: geoai, POSTGRES_PASSWORD: geoai, POSTGRES_DB: geoai }
+    volumes: ["pg-data:/var/lib/postgresql/data"]
+
+volumes:
+  geoai-data: {}
+  pg-data: {}
