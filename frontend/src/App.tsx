@@ -211,6 +211,7 @@ export default function App() {
           <div className="breadcrumbs"><span>TerraLens</span><b>/</b><strong>{domainCfg.label}</strong></div>
           <div className="top-actions">
             <span className="updated"><span className="status-dot" />{backend.kind === 'static' ? 'Synthetic sample scenes' : 'Connected'}</span>
+            <a className="text-button" href="https://sadiqgpasha89.github.io/" target="_blank" rel="noreferrer" title="Return to Sadiq G Pasha Portfolio" style={{fontWeight: 700, color: "var(--accent, #38bdf8)"}}>← Portfolio</a>
             <a className="text-button" href="https://github.com/sadiqgpasha89/GeoAI-Agent" target="_blank" rel="noreferrer">GitHub ↗</a>
           </div>
         </header>
